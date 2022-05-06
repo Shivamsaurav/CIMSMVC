@@ -1,0 +1,62 @@
+CREATE DATABASE CIMS
+GO
+
+--------------------------------------------------------------------------------------
+
+CREATE TABLE CarTransmissionType(
+CarTransTypeID INT PRIMARY KEY IDENTITY,
+Name VARCHAR(10) UNIQUE)
+
+INSERT INTO CarTransmissionType (Name) VALUES ('Automatic')
+INSERT INTO CarTransmissionType (Name) VALUES ('Manual')
+
+SELECT * FROM CarTransmissionType
+
+--------------------------------------------------------------------------------------
+
+CREATE TABLE CarType(
+CarTypeID INT PRIMARY KEY IDENTITY(10,1),
+[Type] VARCHAR(10) UNIQUE)
+
+INSERT INTO CarType ([Type]) VALUES ('Hatchback')
+INSERT INTO CarType ([Type]) VALUES ('Sedan')
+INSERT INTO CarType ([Type]) VALUES ('SUV')
+
+SELECT * FROM CarType
+
+--------------------------------------------------------------------------------------
+
+CREATE TABLE Manufacturer(
+ManufactureID INT PRIMARY KEY IDENTITY(100,1),
+Name VARCHAR(30) UNIQUE,
+ContactPerson VARCHAR(30) UNIQUE,
+RegisteredOffice VARCHAR(30) NOT NULL)
+
+SELECT * FROM Manufacturer
+
+--------------------------------------------------------------------------------------
+
+CREATE TABLE Car(
+CarID INT PRIMARY KEY IDENTITY(5000,1),
+Model VARCHAR(20) UNIQUE,
+ManufactureID INT FOREIGN KEY REFERENCES Manufacturer(ManufactureID),
+TypeID INT FOREIGN KEY REFERENCES CarType(CarTypeID),
+Engine VARCHAR(10),
+BHP INT,
+TransmissionID INT FOREIGN KEY REFERENCES CarTransmissionType(CarTransTypeID),
+Mileage INT NOT NULL,
+Seat INT NOT NULL,
+AirBag Varchar(20) NOT NULL,
+BootSpace VARCHAR(20) NOT NULL,
+Price NUMERIC(11,2) NOT NULL)
+
+--------------------------------------------------------------------------------------
+
+CREATE TABLE Admin(
+AdminId int PRIMARY KEY IDENTITY(2001,1),
+UserName VARCHAR(30) NOT NULL,
+[Password] VARCHAR(20) NOT NULL,
+SecurityQuestion VARCHAR(100) NOT NULL,
+Response VARCHAR(20) NOT NULL)
+
+--------------------------------------------------------------------------------------

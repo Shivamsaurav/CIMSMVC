@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CIMS.Models.CAR>
+
+@{
+    ViewBag.Title = "CustomerList";
+}
+<h2>List</h2>
+
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "Customer") |
+    <span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Home Page", "Index", "HOME")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarType.Type)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarType.Type)
+            </td>
+            <td>
+                @Html.ActionLink("more..", "CarDetails", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>

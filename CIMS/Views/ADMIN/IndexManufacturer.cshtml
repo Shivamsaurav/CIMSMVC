@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CIMS.Models.Manufacturer>
+
+@{
+    ViewBag.Title = "INDEXMANUFACTURER";
+}
+
+<h2>Car Manufacturer</h2>
+
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPersonNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredOffice)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPersonNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredOffice)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Add", "AddNewCarDetails", "CIMS")
+</div>
+
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "ADMIN") |
+    <span class="glyphicon glyphicon-th-list"></span> @Html.ActionLink("Back to List", "Index", "CIMS") |
+    <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index", "HOME")
+</div>

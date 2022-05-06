@@ -1,0 +1,63 @@
+﻿@model CIMS.Models.ADMIN
+@{
+    ViewBag.Title = "REGISTER";
+}
+<h2>Register</h2>
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Home Page", "Index", "HOME") |
+    <span class="glyphicon glyphicon-log-in"></span> @Html.ActionLink("Login", "Login", "ADMIN")
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Admin</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="text-danger">@ViewBag.Username</div>
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="text-danger">@ViewBag.Pswd</div>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SecurityQuestion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SecurityQuestion,
+                 new List<SelectListItem> {
+                      new SelectListItem { Value = "In which city were you born?" , Text = "In which city were you born?" },
+                      new SelectListItem { Value = "What is the name of your first school?" , Text = "What is the name of your first school?" },
+                      new SelectListItem { Value = "Which is your favorite movie?" , Text = "Which is your favorite movie?" }
+                   },"--SELECT SECURITY QUESTION--",
+                 htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SecurityQuestion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Response, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Response, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Response, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="REGISTER" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}

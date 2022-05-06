@@ -1,0 +1,125 @@
+﻿@model IEnumerable<CIMS.Models.CAR>
+@{
+    ViewBag.Title = "SEARCH";
+}
+<h2>Search</h2>
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "ADMIN") |
+    <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index", "HOME")
+</div>
+<p>
+    @using (Html.BeginForm("Search", "Search", FormMethod.Get))
+    {
+
+
+        <b>Model</b>
+
+        @Html.TextBox("Value")
+        <input type="submit" value="Search" class="btn btn-danger" />
+
+        <text>Manufacturer:</text> @Html.DropDownList("ManufacturerId", new SelectList(ViewBag.Name), "")
+        @Html.ValidationMessage("ManufacturerId", "", new { @class = "text-danger" })
+        <text>Type:</text> @Html.DropDownList("TypeId", new SelectList(ViewBag.Type), "")
+        @Html.ValidationMessage("ManufacturerId", "", new { @class = "text-danger" })
+
+
+        <input type="submit" value="Search." class="btn btn-danger" />
+
+    }
+
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Engine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AirBagDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BootSpace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            MANUFACTURER NAME
+        </th>
+        <th>
+            TRANSMISSION TYPE
+        </th>
+        <th>
+            TYPE
+        </th>
+        <th>ACTIONS</th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+
+        <tr>
+            <td colspan="14" align="center">
+                <text class="danger">NO RECORD FOUND</text>
+            </td>
+        </tr>
+
+    }
+    else
+    {
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Engine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BHP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mileage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirBagDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BootSpace)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarTransmissionType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarType.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateCarDetails", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "DeleteCarDetails", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    }
+</table>

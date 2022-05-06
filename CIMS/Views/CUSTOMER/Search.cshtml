@@ -1,0 +1,119 @@
+﻿@model IEnumerable<CIMS.Models.CAR>
+@{
+    ViewBag.Title = "SEARCH";
+}
+
+<div style="background-image:url(/Content/Image/background.jpg);background-position:center center; padding-top:10px;padding-bottom:150px ;background-size: 100% 100%;">
+    <h2 style="color:aliceblue">Search</h2>
+
+    <p>
+        @using (Html.BeginForm("Search", "CUSTOMER", FormMethod.Get))
+        {
+            <b style="color:aliceblue">Model</b>
+
+            @Html.TextBox("Value")
+            <input type="submit" value="Search" class="btn btn-danger" />
+
+            <b style="color:aliceblue">Manufacturer:</b> @Html.DropDownList("ManufacturerId", new SelectList(ViewBag.Name), "")
+            @Html.ValidationMessage("ManufacturerId", "", new { @class = "text-danger" })
+            <b style="color:aliceblue">Type:</b> @Html.DropDownList("TypeId", new SelectList(ViewBag.Type), "")
+            @Html.ValidationMessage("ManufacturerId", "", new { @class = "text-danger" })
+
+            <input type="submit" value="Search1" class="btn btn-danger" />
+            }
+</p>
+
+    <table class="table">
+        <tr>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.Engine)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.BHP)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.Mileage)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.Seat)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.AirBagDetails)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.BootSpace)
+            </th>
+            <th style="color:aliceblue;">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th style="color:aliceblue;">
+                MANUFACTURER NAME
+            </th>
+            <th style="color:aliceblue;">
+                TRANSMISSION TYPE
+            </th>
+            <th style="color:aliceblue;">
+                TYPE
+            </th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+
+            <tr>
+                <td colspan="14" align="center">
+                    <text class="danger">NO RECORD FOUND</text>
+                </td>
+            </tr>
+
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Engine)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.BHP)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Mileage)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Seat)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.AirBagDetails)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.BootSpace)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.CarTransmissionType.Name)
+                    </td>
+                    <td style="color:aliceblue;">
+                        @Html.DisplayFor(modelItem => item.CarType.Type)
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "CUSTOMER") |
+    <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index", "HOME")
+</div>

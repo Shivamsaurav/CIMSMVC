@@ -1,0 +1,106 @@
+﻿@model CIMS.Models.CAR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "ADMIN") |
+    <span class="glyphicon glyphicon-th-list"></span> @Html.ActionLink("Back to List", "Index") |
+    <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index", "HOME")
+</div>
+<div>
+    <h4>CAR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Engine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Engine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BHP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BHP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirBagDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirBagDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BootSpace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BootSpace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarTransmissionType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarTransmissionType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarType.Type)
+        </dd>
+
+    </dl>
+</div>

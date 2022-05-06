@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .myactionlink {
+        color: white
+    }
+</style>
+
+<div style="background-image:url(/Content/Image/home.jpg);background-position:center center; padding-top:10px;padding-bottom:210px ;background-size: 100% 100%;">
+    <marquee width="100%" direction="right" height="100px">
+        <h2>Welcome to the Customer Page.</h2>
+    </marquee>
+
+    <div class="myactionlink" style="font-size:x-large;font-weight:300;text-align:center">
+        @Html.ActionLink("LIST | Get list of Cars", "CustomerList", "CUSTOMER", "", new { @class = "myactionlink" })
+    </div>
+    <br />
+    <div class="myactionlink" style="font-size:x-large;font-weight:300;text-align:center">
+        @Html.ActionLink("SEARCH | Search car from List", "Search", "CUSTOMER", "", new { @class = "myactionlink" })
+    </div>
+</div>
+
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Home Page", "Index", "HOME")
+</div>
+<br />

@@ -1,0 +1,46 @@
+﻿@model CIMS.Models.ADMIN
+@{
+    ViewBag.Title = "LOGIN";
+}
+<h2>Login</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="LOGIN" class="btn btn-primary" />
+            <u>@Html.ActionLink("REGISTER", "Register", "ADMIN")</u>
+        </div>
+    </div>
+    <text style="color:red">@ViewBag.Message</text>
+</div>
+}
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-alert"></span> @Html.ActionLink("Forgot Password", "ForgotPassword1","ADMIN") |
+    <span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Home Page", "Index","HOME")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

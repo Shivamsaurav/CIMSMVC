@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<marquee width="100%" direction="right" height="100px">
+    <h2>Welcome to the Admin Page.</h2>
+</marquee>
+
+<style>
+    .myactionlink {
+        color: white
+    }
+</style>
+<div style="text-align:right;font-size:large;">
+    <u>
+        <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index","HOME")
+    </u>
+</div>
+
+<div class="myactionlink" style="background-color:tomato;height:50px;font-size:x-large;font-weight:300;text-align:center">
+    @Html.ActionLink("LIST | Get list of Cars", "Index", "CIMS", "", new { @class = "myactionlink" })
+</div>
+<br />
+<div class="myactionlink" style="background-color:cornflowerblue;height:50px;font-size:x-large;font-weight:300;text-align:center">
+    @Html.ActionLink("ADD | Add Car to List", "AddNewCarDetails", "CIMS", "", new { @class = "myactionlink" })
+</div>
+<br />
+<div class="myactionlink" style="background-color:lawngreen;height:50px;font-size:x-large;font-weight:300;text-align:center">
+    @Html.ActionLink("SEARCH | Search car from List", "Search", "Search", "", new { @class = "myactionlink" })
+</div>
+<br />

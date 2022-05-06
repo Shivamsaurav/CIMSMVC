@@ -1,0 +1,65 @@
+﻿@model CIMS.Models.Manufacturer
+
+@{
+    ViewBag.Title = "CREATE MANUFACTURER";
+}
+
+<h2>Add Manufacturer</h2>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="text-danger">@ViewBag.Reason</div>
+
+<div style="text-align:right;font-size:large;">
+    <span class="glyphicon glyphicon-tasks"></span> @Html.ActionLink("Main Menu", "Index", "ADMIN") |
+    <span class="glyphicon glyphicon-th-list"></span> @Html.ActionLink("Back to List", "IndexManufacturer") |
+    <span class="glyphicon glyphicon-log-out"></span> @Html.ActionLink("Logout", "Index", "HOME")
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Manufacturer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="text-danger">@ViewBag.name</div>
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactPersonNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContactPersonNumber, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="text-danger">@ViewBag.contact</div>
+                @Html.ValidationMessageFor(model => model.ContactPersonNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegisteredOffice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RegisteredOffice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RegisteredOffice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CREATE MANUFACTURER" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Add", "AddNewCarDetails", "CIMS")
+</div>
+
+
